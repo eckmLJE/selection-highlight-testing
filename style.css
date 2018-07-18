@@ -1,0 +1,23 @@
+body {
+  margin: auto;
+  padding: 10px;
+}
+
+.statement {
+  width: 500px;
+  text-align: justify;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.highlight {
+  background-color: greenyellow;
+}
+
+.highlight-alt {
+  background-color: green;
+}
+
+/* .highlight:hover {
+  background-color: yellow;
+} */
