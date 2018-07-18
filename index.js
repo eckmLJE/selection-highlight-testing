@@ -75,7 +75,25 @@ const getSelectionInfo = () => {
       end: selection.extentOffset
     };
     currentAnnotations.push(newAnnotation);
+  } else if (
+    selection.baseOffset - selection.extentOffset > 0 &&
+    selection.baseNode.parentNode.nodeName == "SPAN"
+  ) {
+    const base = selection.baseOffset;
+    const extent = selection.extentOffset;
+    const parentAnnotationId =
+      selection.baseNode.parentNode.attributes.name.value;
+    const parentAnnotation = currentAnnotations.find(
+      annotation => annotation.id == parentAnnotationId
+    );
+    const newAnnotation = {
+      id: ++annotationId,
+      start: parentAnnotation.start + base,
+      end: parentAnnotation.end + extent
+    };
+    currentAnnotations.push(newAnnotation);
   } else {
+    console.log(selection);
     console.log("invalid or no selection");
   }
 };
